@@ -1,0 +1,15 @@
+h1{
+    font-weight: bold;
+}
+h2{
+     font-weight: bold;
+}
+body{
+   height: 100%;
+   background-image: url("../images/background/4561.png");
+background-size: 650px;
+  background-repeat: no-repeat;
+  background-position: left;
+   
+}
+
