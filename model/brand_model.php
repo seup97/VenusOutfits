@@ -46,7 +46,7 @@ class Brand
     public function getBandCount()
     {
          $conn= $GLOBALS["conn"];
-        $sql="SELECT COUNT(brand_id) as brandCount FROM brand  WHERE brand_status='1'";
+        $sql="SELECT * FROM brand  WHERE brand_status='1'";
         $result=$conn->query($sql) or die($conn->error);  
         return $result;
         

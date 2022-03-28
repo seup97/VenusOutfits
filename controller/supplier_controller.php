@@ -23,8 +23,8 @@ else
        case "add_supplier":
                 $companyName=$_POST["companyName"];
                 $email=$_POST["email"];
-                $address1=$_POST["address1"];
-                $address2=$_POST["address2"];
+                $doorno=$_POST["doorno"];
+                $street=$_POST["street"];
                 $cno1=$_POST["cno1"];
                 $cno2=$_POST["cno2"];
                 $country=$_POST['country'];
@@ -51,13 +51,13 @@ else
                         throw new Exception("Email is Empty!!!");
 
                     }
-                    if($address1=="")
+                    if($doorno=="")
                     {
-                        throw new Exception("Address 1 is Empty!!!");
+                        throw new Exception("Door Number is Empty!!!");
                     } 
-                     if($address2=="")
+                     if($street=="")
                     {
-                        throw new Exception("Address 2 is Empty!!!");
+                        throw new Exception("Sreet is Empty!!!");
                     } 
 
                     if($cno1=="")
@@ -133,9 +133,11 @@ else
                     }
                     
                     
-                   $supplier_id= $supplierObj->addSupplier($companyName, $email, $address1, $address2, $cno1,$cno2,$country,$state,$city,$postalcode,$industry,$psdescription,$contactName,$contactemail,$companyPosition,$contactno,$comments);
+                   $supplier_id= $supplierObj->addSupplier($companyName, $email, $cno1,$cno2,$industry,$psdescription,$contactName,$contactemail,$companyPosition,$contactno,$comments);
                     if($supplier_id>0)
                     {
+                        $supplier_id= $supplierObj->addSupplierAddress($supplier_id,$doorno,$street,$country,$state,$city,$postalcode);
+                        
                         $msg= "Supplier Added Succesfully";
                         $msg=  base64_encode($msg);
                         ?>

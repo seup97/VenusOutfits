@@ -4,6 +4,8 @@ $(document).ready(function(){
       
       var role_id=$("#user_role").val();
       
+      alert(role_id);
+      
      var url="../controller/user_controller.php?status=get_functions";
      
      $.post(url,{role_id:role_id},function(data){

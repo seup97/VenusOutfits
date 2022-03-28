@@ -145,6 +145,7 @@
                                   <a href="edit-user.php?user_id=<?php echo $user_id; ?>" class="btn btn-warning"><span class="glyphicon glyphicon-pencil"></span>&nbsp;Edit</a>  
                                   <a href="../controller/user_controller.php?status=delete_user&user_id=<?php echo $user_id ?>" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span>&nbsp;Delete</a>
                                 </td>
+                                
                             </tr>
                             <?php
                                 }

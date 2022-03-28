@@ -22,22 +22,102 @@
     $customerObj = new customer();
     //   getting all customers
     $customerResult = $customerObj->getAllCustomers();
+
 ?>
 <html>
     <head>
         <!--  include bootstrap css   -->
         <link rel="stylesheet" type="text/css" href="../bootstrap/css/bootstrap.min.css"/>
-    </head>
-    <body>
-        <div class="container-fluid" style="max-width: 90%">
+    <style>
+            body {
+   font-family: "Arial", sans-serif;
+ }
+
+ .sidenav {
+   height: 100%;
+   width: 0;
+   position: fixed;
+   z-index: 1;
+   top: 0;
+   left: 0;
+   background-color: #111;
+   overflow-x: hidden;
+   transition: 0.5s;
+   padding-top: 60px;
+ }
+
+ .sidenav a {
+   padding: 8px 8px 8px 32px;
+   text-decoration: none;
+   font-size: 20px;
+   color: #818181;
+   display: block;
+   transition: 0.3s;
+ }
+
+ .sidenav a:hover {
+   color: #f1f1f1;
+ }
+
+ .sidenav .closebtn {
+   position: absolute;
+   top: 0;
+   right: 25px;
+   font-size: 36px;
+   margin-left: 50px;
+ }
+
+
+ @media screen and (max-height: 450px) {
+   .sidenav {padding-top: 15px;}
+   .sidenav a {font-size: 18px;}
+ }
+ .zoom {
+
+  transition: transform .3s; /* Animation */;
+}
+
+.zoom:hover {
+  transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+}
+ </style>
+</head>
+<body>  
+         <div class="sidenav" id="mySidenav">
+           <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+            <a href="#"><i class='fa fa-line-home'></i>&nbsp; Home</a>
+            <a href="../view/dashboard.php"><i class="fa fa-dashboard"></i>&nbsp;Dashboard</a>
+            <a href="../view/user.php"><i class="fa fa-user"></i>&nbsp; Users</a>
+            <a href="../view/supplier.php"><i class="fa fa-handshake-o"></i>&nbsp;Suppliers</a>
+            <a href="../view/customer.php"><i class="fa fa-user-plus"></i>&nbsp;Customers</a>
+            <a href="../view/product.php"><i class="fa fa-list-alt"></i></span>&nbsp;Product</a>
+            <a href="../view/delivery.php"><i class="fa fa-truck"></i>&nbsp; Delivery</a>
+            <a href="../view/order.php"><i class='fa fa-send'></i>&nbsp; Orders</a>
+            <a href="../view/store.php"><i class='fa fa-line-chart'></i>&nbsp; Stock</a>
+            <a href="#"><i class='fa fa-line-arrow'></i>&nbsp; Logout</a>
+       </div>
+            <script>
+                function openNav() {
+                  document.getElementById("mySidenav").style.width = "200px";
+                  document.getElementById("main").style.marginLeft = "200px";
+                }
+
+                function closeNav() {
+                  document.getElementById("mySidenav").style.width = "0";
+                  document.getElementById("main").style.marginLeft= "0";
+                }
+        </script>
+              <div class="col-md-2">
+                   <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+              </div> 
+             <div class="container-fluid" style="max-width: 90%">       
             <div class="row">
-                <div class="col-md-2">
-                    <img src="../images/iconset/venusOutfits1.png" width="100px" height="100px"/>
+                <div class="col-md-1">
+                    <img src="../images/iconset/venusOutfits1.png" width="100px" height="100px" alt="Avatar"/>
                 </div>
                 <div class="col-md-8">
                     <h1 align="center">Clothing Store Management System</h1>
                 </div>
-                <div class="col-md-2">&nbsp;</div>
             </div>
              <hr class="solid" style="border-top: 3px solid #bbb;"/>
             <div class="row">
@@ -100,25 +180,26 @@
                         }
 
                     ?>
-                    <div class="row">
+                  <div class="row">
                         <h3 class="col-md-12">Order Details</h3>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-12">&nbsp;</div>
-                    </div>     
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label class="control-label" >Order Number</label>
+                  </div>
+                  <div class="form-group">
+                  <label for="date" class="col-sm-12 control-label">Date: <?php echo date('Y-m-d') ?></label>
+                </div> 
+                 <div class="form-group">
+                  <label for="time" class="col-sm-12 control-label">Date: <?php echo date('h:i:a') ?></label>
+                </div>        
+                  <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>      
+                  <div class="col-md-8">
+                  <div class="row">
+                      <div class="col-md-3">
+                         <label class="control-label">Customer Name</label>
                         </div>
-                        <div class="col-md-4">
-                            <input type="text" name="ordernumber" id="ordernumber" class="form-control"/>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="control-label" >Customer Name</label>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                            <select class="form-control" id="customer_id" name="customer_id">
+                     <div class="col-md-4"> 
+                     <div class="form-group">
+                         <select class="form-control" id="customer_id" name="customer_id">
                                 <option value="">--Select Customer--</option>
                               <?php
                                 while($customer_row=$customerResult->fetch_assoc())
@@ -130,20 +211,49 @@
                                 <?php
                                 }
                                 ?>
-                            </select>  
-                            </div>
+                            </select> 
+                       </div>
+                     </div>    
+                  </div>
+                   <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>    
+                  <div class="row">
+                       <div class="col-md-3">
+                         <label class="control-label">Customer Address</label>
                         </div>
-                    </div>
-                    <div class="row">
-                            <div class="col-md-12">&nbsp;</div>
-                    </div>    
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label class="control-label" >Product Name</label>
+                      <div class="col-md-4" id ="showaddress"> 
+                      
                         </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" id="product_id"  name="product_id">
+                </div>
+                <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>      
+                <div class="row">
+                       <div class="col-md-3">
+                         <label class="control-label">Customer Phone</label>
+                        </div>
+                      <div class="col-md-4" id ="showphone"> 
+                      
+                        </div>
+                </div>      
+                </div>      
+                    <div class="row">
+                        <div class="col-md-12">
+                         <table class="table table-bordered" id="product_info_table">
+                      <thead>
+                       <tr>
+                      <th style="width:50%">Product</th>
+                      <th style="width:10%">Qty</th>
+                      <th style="width:10%">Rate</th>
+                      <th style="width:20%">Amount</th>
+                      <th style="width:10%"><button type="button" id="add_row" class="btn btn-default"><i class="fa fa-plus"></i></button></th>
+                      </tr>
+                      </thead>
+                         <tbody>
+                     <tr id="row_1">
+                       <td>
+                        <select class="form-control" id="product_id"  name="product_id">
                                 <option value="">--Select Product--</option>
                               <?php
                                 while($product_row=$productResult->fetch_assoc())
@@ -155,113 +265,84 @@
                                 <?php
                                 }
                                 ?>
-                            </select>  
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <label class="control-label" >Sizes</label>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <select class="form-control" id="size_id"  name="size_id">
-                                <option value="">--Select Size--</option>
-                              <?php
-                                while($size_row=$sizeResult->fetch_assoc())
-                                {
-                              ?>
-                                <option value="<?php echo $size_row["product_id"]; ?>">
-                                <?php echo $size_row["size_name"]; ?>
-                                </option>
-                                <?php
-                                }
-                                ?>
-                            </select>  
-                            </div>
-                        </div>
+                            </select> 
+                        </td>
+                        <td><input type="text" name="qty[]" id="qty_1" class="form-control" required onkeyup="getTotal(1)"></td>
+                        <td>
+                          <input type="text" name="rate[]" id="rate_1" class="form-control" autocomplete="off">
+                          <input type="hidden" name="rate_value[]" id="rate_value_1" class="form-control" autocomplete="off">
+                        </td>
+                        <td>
+                          <input type="text" name="amount[]" id="amount_1" class="form-control" disabled autocomplete="off">
+                          <input type="hidden" name="amount_value[]" id="amount_value_1" class="form-control" autocomplete="off">
+                        </td>
+                        <td><button type="button" class="btn btn-default" onclick="removeRow('1')"><i class="fa fa-close"></i></button></td>
+                     </tr>
+                   </tbody>
+                         </table>
+                  </div>
+                  </div>
+                          <br /> <br/>
+
+            <div class="col-md-6 col-xs-12 pull pull-right">
+
+                  <div class="form-group">
+                    <label for="gross_amount" class="col-sm-5 control-label">Gross Amount</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" id="gross_amount" name="gross_amount" disabled autocomplete="off">
+                      <input type="hidden" class="form-control" id="gross_amount_value" name="gross_amount_value" autocomplete="off">
                     </div>
-                    <div class="row">
-                            <div class="col-md-12">&nbsp;</div>
-                    </div>    
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label class="control-label" >Quantity</label>
-                        </div>
-                        <div class="col-md-4">
-                             <input type="number" id="quantity" name="quantity" min="1" max="1000">
-                        </div>
-                        <div class="col-md-2">
-                            <label class="control-label">Price</label>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="input-group">
-                                <span class="input-group-addon">Rs</span>
-                                <input type="text" class="form-control" name="price" id="price"/>
-                            </div>
-                        </div> 
-                    </div>      
-                    <div class="row">
-                            <div class="col-md-12">&nbsp;</div>
-                    </div>    
-                    <div class="row">
-                        <div class="col-md-2">
-                            <label class="control-label" >Description</label>
-                        </div>
-                        <div class="col-md-8">
-                            <input type="text" name="prdescription" style="height:100px" id="prdescription" class="form-control"/>
-                        </div>
-                    </div>        
-                    <div class="row">
+                  </div>
+                 <div class="row">
                         <div class="col-md-12">&nbsp;</div>
+                   </div>
+                  <div class="form-group">
+                    <label for="vat_charge" class="col-sm-5 control-label">Delivery Charge</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" id="delivery_charge" name="delivery_charge" autocomplete="off">
+                      <input type="hidden" class="form-control" id="vat_charge_value" name="vat_charge_value" autocomplete="off">
                     </div>
-                    <div class="row">
-                            <div class="col-md-12">Shipping Details</div>
-                    </div>    
-                    <div class="row">
-                        <div class="col-md-6 col-md-offset-2">
-                            <input type="submit" class="btn btn-success" value="Save"/>&nbsp;
-                            <input type="reset" class="btn btn-danger" value="Reset"/>
-                        </div>
+                  </div>
+                 <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>
+                  <div class="form-group">
+                    <label for="discount" class="col-sm-5 control-label">Discount</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" id="discount" name="discount" placeholder="Discount" onkeyup="subAmount()" autocomplete="off">
                     </div>
-                      </form>    
+                  </div>
+                 <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>
+                  <div class="form-group">
+                    <label for="net_amount" class="col-sm-5 control-label">Net Amount</label>
+                    <div class="col-sm-7">
+                      <input type="text" class="form-control" id="net_amount" name="net_amount" disabled autocomplete="off">
+                      <input type="hidden" class="form-control" id="net_amount_value" name="net_amount_value" autocomplete="off">
                     </div>
-                </div>
-           
-        </div>
-    </body>
+                  </div>
+                 <div class="row">
+                        <div class="col-md-12">&nbsp;</div>
+                   </div>
+                  <br /> <br/>
+                 </form> 
+            </div>
+        </div>    
+</div>
+
+       
+  <div class="control-sidebar-bg"></div>
+</div>
+<!-- ./wrapper -->
+
+  </body>
     <!--   include jquery -->
     <script src="../js/jquery-1.12.4.js"></script>
-    <script src="../js/productvalidation.js"></script>
+
+    <script src="../js/ordervalidation.js"></script>
     <!-- include bootstrap js -->
     <script src="../bootstrap/js/bootstrap.min.js"></script>
-    <script>
-    $(function()
-    {
-      $(".multiple").select2();
-    });
-    </script>
-    <script>
-            function readImage(input)
-            {
-                ///  check if I have selected a file
-                if(input.files  && input.files[0])
-                {
-                    var reader = new FileReader();
-                    reader.onload= function(e)
-                    {
-                        $("#imgprev")
-                                .attr('src',e.target.result)
-                                .width(120)
-                                .height(80)
-                    };
-                    
-                    reader.readAsDataURL(input.files[0])
-                    
-                    
-                }
-                
-                
-            }
-    
-    
-    </script>
+
+        
 </html>

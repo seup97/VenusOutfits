@@ -6,6 +6,7 @@ include '../commons/fpdf181/fpdf.php';
 include '../model/product_model.php';
 include '../model/stock_model.php';
 
+
 $productObj = new Product();
 $stockObj = new Stock();
 
@@ -62,10 +63,10 @@ if(!isset($_REQUEST["status"]))
     $fpdf->Output();  //  display the pdf on the browser
 }
 else{
-    $d1="User_report_".$date;
-    $filename=$d1.".pdf";
-    $path="../documents/product_report/$filename";
-   // $fpdf->Output($filename,"D");  /// download the file
+    $d1="Product_report_".$date;
+    $name=$d1.".pdf";
+    $path="../documents/product_report/$name";
+    //$fpdf->Output($filename,"D");  /// download the file
     
    
     $fpdf->Output($path,'F');

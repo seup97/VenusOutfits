@@ -6,9 +6,6 @@
     
     $moduleArray= $_SESSION["user_module"];
     
-    include '../model/user_model.php';
-    $userObj = new User();
-    
     $activeResult= $userObj->getActiveUserCount();
     
     $activerow=$activeResult->fetch_assoc();

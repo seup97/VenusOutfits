@@ -48,7 +48,7 @@ class Category{
      public function getCategoryCount()
     {
         $conn= $GLOBALS["conn"];
-        $sql="SELECT COUNT(cat_id) as categoryCount FROM category  WHERE cart_status='1'";
+        $sql="SELECT * FROM category  WHERE cart_status='1'";
         $result=$conn->query($sql) or die($conn->error);  
         return $result;
         

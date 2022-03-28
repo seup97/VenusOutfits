@@ -68,7 +68,7 @@ class Product{
      public function getProductCount()
     {
          $conn= $GLOBALS["conn"];
-        $sql="SELECT COUNT(product_id) as productCount FROM product  WHERE product_status='1'";
+        $sql="SELECT * FROM product  WHERE product_status='1'";
         $result=$conn->query($sql) or die($conn->error);  
         return $result;
         

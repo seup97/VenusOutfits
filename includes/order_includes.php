@@ -9,7 +9,7 @@
                             &nbsp;
                             View Orders
                         </a>
-                         <a  href="#" class="list-group-item">
+                         <a  href="manage-orders.php" class="list-group-item">
                             <span class="glyphicon glyphicon-search"></span> 
                             &nbsp;
                             Manage Orders

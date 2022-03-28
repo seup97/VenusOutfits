@@ -5,17 +5,27 @@ $dbconnection= new dbConnection();
 
 class supplier{
     
-    public function addSupplier($companyName, $email, $address1, $address2, $cno1,$cno2,$country,$state,$city,$postalcode,$industry,$psdescription,$contactName,$contactemail,$companyPosition,$contactno,$comments)
+    public function addSupplier($companyName, $email, $cno1,$cno2,$industry,$psdescription,$contactName,$contactemail,$companyPosition,$contactno,$comments)
     {
         $conn= $GLOBALS["conn"];
-        $sql="INSERT INTO customer(supplier_companyName,supplier_companyemail,supplier_address1,supplier_address2,supplier_cno1,supplier_cno2,supplier_country,supplier_state,supplier_city,supplier_postalcode,supplier_industry,supplier_description,	supplier_contactperson,supplier_contactemail,supplier_companyposition,supplier_cpno,supplier_comment)VALUES"
-                . "($companyName, $email, $address1, $address2, $cno1,$cno2,$country,$state,$city,$postalcode,$industry,$psdescription,$contactName,$contactemail,$companyPosition,$contactno,$comments)";
+        $sql="INSERT INTO supplier(supplier_companyname,supplier_companyemail,supplier_cno1,supplier_cno2,supplier_industry,supplier_description,supplier_contactperson,supplier_contactemail,supplier_companyposition,supplier_cpno,supplier_comment)VALUES"
+                . "('$companyName', '$email', '$cno1','$cno2','$industry','$psdescription','$contactName','$contactemail','$companyPosition','$contactno','$comments')";
         $result=$conn->query($sql) or die($conn->error);
         return $conn->insert_id;
         return $result;
         
   
     }
+    
+    public function addSupplierAddress($supplier_id,$doorno,$street,$country,$state,$city,$postalcode)
+    {
+        $conn= $GLOBALS["conn"];
+        $sql="INSERT INTO supplier_address(supplier_id,door_no,street,country,state,city,postalcode)VALUES"
+                . "('$supplier_id','$doorno','$street','$country','$state','$city','$postalcode')";
+        $result=$conn->query($sql) or die($conn->error);
+        return $result;
+    }        
+    
     public function getAllSuppliers()
     {
         $conn= $GLOBALS["conn"];
@@ -49,7 +59,7 @@ class supplier{
      public function getActiveSupplierCount()
     {
         $conn= $GLOBALS["conn"];
-        $sql="SELECT COUNT(customer_id) as activeCustomerCount FROM customer  WHERE customer_status='1'";
+        $sql="SELECT COUNT(supplier_id) as activeSupplierCount FROM supplier  WHERE supplier_status='1'";
         $result=$conn->query($sql) or die($conn->error);  
         return $result;
         

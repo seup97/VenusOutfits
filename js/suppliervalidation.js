@@ -4,8 +4,8 @@
       
       var companyName=$("#comapnyName").val();
       var email=$("#email").val();
-      var address1=$("#address1").val();
-      var address2=$("#address2").val();
+      var doorno=$("#doorno").val();
+      var street=$("#street").val();
       var cno1=$("#cno1").val();
       var cno2=$("#cno2").val();
       var country=$("#country").val();
@@ -37,7 +37,7 @@
           
           return false;
       }
-      if(address1=="")
+      if(doorno=="")
       {
           $("#alertdiv").addClass("alert alert-danger");
           $("#alertdiv").html("<b>address Cannot Be Empty!!</b>");

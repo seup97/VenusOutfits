@@ -3,15 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/homepage.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/order.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/view-orders.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/view-order.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/model/customer_model.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/includes/order_includes.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/add-order.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/view-products.php</file>
-            <file>file:/C:/XAMPP/htdocs/VenusOutfits/view/add-product.php</file>
+            <file>file:/C:/xampp/htdocs/VenusOutfits/model/customer_model.php</file>
+            <file>file:/C:/xampp/htdocs/VenusOutfits/view/view-suppliers.php</file>
+            <file>file:/C:/xampp/htdocs/VenusOutfits/controller/customer_controller.php</file>
+            <file>file:/C:/xampp/htdocs/VenusOutfits/model/supplier_model.php</file>
+            <file>file:/C:/xampp/htdocs/VenusOutfits/controller/supplier_controller.php</file>
         </group>
     </open-files>
 </project-private>

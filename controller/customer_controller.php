@@ -23,13 +23,14 @@ else
        case "add_customer":
                 $fname=$_POST["fname"];
                 $lname=$_POST["lname"];
-                $address=$_POST["address"];
+                $address_no=$_POST["addressno"];
+                $address_street=$_POST["street"];
+                $address_city=$_POST["city"];
                 $cno1=$_POST["cno1"];
                 $cno2=$_POST["cno2"];
                 $email=$_POST["email"];
                 $nic=$_POST["nic"];
                 $country=$_POST['country'];
-                $city=$_POST["city"];
                 $state=$_POST["state"];
                 $postalcode=$_POST["postalcode"];
                 
@@ -46,9 +47,14 @@ else
                         throw new Exception("Last Name is Empty!!!");
 
                     }
-                    if($address=="")
+                    if($address_no=="")
                     {
-                        throw new Exception("Address  is Empty!!!");
+                        throw new Exception("Address Number is Empty!!!");
+                    } 
+                    
+                    if($address_street=="")
+                    {
+                        throw new Exception("Steet is Empty!!!");
                     } 
 
                     if($cno1=="")
@@ -69,7 +75,7 @@ else
                     {
                         throw new Exception("Country is Empty!!!");
                     }    
-                    if($city=="")
+                    if($address_city=="")
                     {
                         throw new Exception("City is Empty!!!");
                     }   
@@ -104,9 +110,11 @@ else
                         
                     }
                     
-                   $customer_id= $customerObj->addCustomer($fname, $lname, $address1, $address2, $cno1,$cno2,$email,$nic,$country,$city,$state,$postalcode);
+                   $customer_id= $customerObj->addCustomer($fname, $lname,$cno1,$cno2,$email,$nic);
                     if($customer_id>0)
                     {
+                        $customer_id= $customerObj->addCustomerAddress($customer_id,$address_no,$address_street,$address_city,$country,$state,$postalcode);
+                        
                         $msg= "Customer Added Succesfully";
                         $msg=  base64_encode($msg);
                         ?>

@@ -330,7 +330,7 @@ else
             $mail->addAddress($username);   // Add a recipient
             $mail->addAddress($username);   // Add a recipient
             
-            
+            $client_email="sehup1998@gmail.com";
             $mail->addCC($client_email);
             $mail->addBCC('bcc@example.com');
             

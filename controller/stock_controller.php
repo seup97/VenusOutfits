@@ -128,5 +128,39 @@ else
             }
             
            break;
+           
+       case "send_outOfStockEmail":
+           
+           include '../includes/email_includes.php';
+               $receiver="sehup98@gmail.com";
+            $username="sehup98@gmail.com";
+            $mail->setFrom('mail@et.lk', 'Clothing Store manament System');
+            $mail->addReplyTo('mail@et.lk', 'Clothing Store manament System');
+            $mail->addAddress($username);   // Add a recipient
+            $mail->addAddress($username);   // Add a recipient
+            
+            
+            $mail->addCC($client_email);
+            $mail->addBCC('bcc@example.com');
+            
+            
+            $mail->AddAttachment('../documents/stock_report/stock_report');
+           
+             $mail->Subject = 'Stock Report';
+            
+            
+            $mail->isHTML(true);  // Set email format to HTML
+            $body="<h1>Hi</h1>";
+            $body.="<img src='http://www.esoft.lk/wp-content/themes/esoft/assets/images/mainlogo.png' width='200px' height='80px' />";
+                   
+            $body.="<p>Dear Sir/Madam,<br> Your Stock are Low. Thank you</p>";
+             $mail->Body  = $body;
+            if($mail->send())
+            {
+                echo "Mail Successfully Sent!!!";
+                
+            }
+            
+           break;
    }
 }
